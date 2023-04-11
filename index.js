@@ -26,6 +26,9 @@ popup.addEventListener("click", closePopup);
 
 function handleForSubmit(evt) {
     evt.preventDefault();
+    if (nameInput.value.trim() === "" || jobInput.value.trim() === "") {
+        return;
+    }
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     popup.classList.remove("popup_open");

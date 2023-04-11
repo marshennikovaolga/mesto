@@ -1,0 +1,22 @@
+.profile__info {
+    display: grid;
+    align-self: center;
+    width: 282px;
+    margin: 0;
+    padding: 0;
+    grid-gap: 0;
+      grid-template-areas:
+        'image image'
+        'person btn-edit'
+        'description description';
+}
+
+@media screen and (min-width: 768px) {
+    .profile__info {
+        grid-template-areas: 
+        'image person btn-edit'
+        'image description .';
+        width: 500px;
+        margin-right: 224px;
+    }
+}

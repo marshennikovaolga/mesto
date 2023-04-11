@@ -1,0 +1,18 @@
+.profile__person {
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+    grid-area: person;
+    justify-items: end;
+    width: 189px;
+}
+
+@media screen and (min-width: 768px) {
+    .profile__person {
+        font-size: 42px;
+        line-height: 48px;
+        width: 294px;
+    }
+}

@@ -16,20 +16,17 @@
     grid-area: add;
 }
 
+.profile__btn-add:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .profile__btn-add {
         width: 150px;
         background-size: 22px 22px;
         margin: 0;
-        align-self: end;
-        position: relative;
-        bottom: 70px;
+        align-self: start;
+        text-align: right;
     }
-}
-
-
-
-.profile__btn-add:hover {
-    opacity: 0.6;
-    cursor: pointer;
 }

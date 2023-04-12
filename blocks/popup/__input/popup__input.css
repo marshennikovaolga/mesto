@@ -21,4 +21,8 @@
     .popup__input {
         width: 358px;
     }
+
+    .popup__input:last-of-type {
+        margin-bottom: 48px;
+    }
 }

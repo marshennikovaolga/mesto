@@ -12,6 +12,11 @@
     transition: all 0.2s ease-in-out;
 }
 
+.profile__btn-edit:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 @media screen and (min-width: 768px) {
     .profile__btn-edit {
         margin-left: 18px;
@@ -20,9 +25,4 @@
         align-self: center;
         justify-content: start;
     }
-}
-
-.profile__btn-edit:hover {
-    cursor: pointer;
-    opacity: 0.5;
 }

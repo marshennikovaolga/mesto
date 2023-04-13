@@ -1,11 +1,10 @@
 .profile__pic {
     border-radius: 50%;
-    max-width: 120px;
+    width: 120px;
     margin: 0 0 22px 0;
-    aspect-ratio: 120px / 120px;
+    aspect-ratio: 120/120;
     object-fit: cover;
     justify-self: center;
-    grid-area: image;
 }
 
 @media screen and (min-width: 768px) {

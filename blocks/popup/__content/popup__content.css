@@ -1,6 +1,6 @@
 .popup__content {
     width: 282px;
-    margin: 20px auto 0;
+    margin: 20px auto 20px;
     border-radius: 10px;
     position: relative;
     display: flex;

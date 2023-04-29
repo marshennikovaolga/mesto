@@ -134,7 +134,7 @@ groupsContainer.addEventListener("click", function (evt) {
 // открыть картинку
 
 const imagePopup = document.querySelector(".popup_type_image");
-const imagePopupCloseBtn = imagePopup.querySelector(".popup__close");
+const imagePopupCloseBtn = imagePopup.querySelector(".popup__picture-close");
 const imagePopupImage = imagePopup.querySelector(".popup__picture");
 const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 

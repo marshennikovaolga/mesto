@@ -1,4 +1,4 @@
-.cards__btn {
+.groups__like {
     width: 22px;
     height: 19px;
     background-color: #fff;
@@ -11,7 +11,7 @@
     margin-top: 5px;
 }
 
-.cards__btn:hover {
+.groups__like:hover {
     cursor: pointer;
     opacity: 0.5;
 }

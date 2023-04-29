@@ -22,57 +22,14 @@
                         </div>
                     <button type="button" class="profile__btn-add" aria-label="Добавить карточку"></button>
                 </section>
-                <section class="elements">
-                    <ul class="cards">
-                        <li class="cards__item">
-                            <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Карачаевск</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                        <li class="cards__item">
-                            <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Гора Эльбрус</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                        <li class="cards__item">
-                            <img src="./images/dombai.jpg" alt="Домбай" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Домбай</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                        <li class="cards__item">
-                            <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Гора Эльбрус</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                        <li class="cards__item">
-                            <img src="./images/dombai.jpg" alt="Домбай" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Домбай</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                        <li class="cards__item">
-                            <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="cards__image" />
-                            <div class="cards__description">
-                                <h2 class="cards__title">Карачаево-Черкессия</h2>
-                                <button class="cards__btn" type="button"></button>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+                <section class="groups">
+                </section>        
             </main>
             <footer class="footer">
                 <p class="footer__description">© 2023 Mesto Russia</p>
             </footer>
-            <div class="popup">
+            <!-- Попап для редактирования профиля -->
+            <div class="popup popup_type_edit">
                 <div class="popup__content">
                 <button class="popup__close" type="button" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
@@ -83,6 +40,42 @@
                 </form>
                 </div>
             </div>
+            <!-- Попап для добавления карточек -->
+                <div class="popup popup_type_add">
+                    <div class="popup__content">
+                        <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                        <h3 class="popup__title">Новое место</h3>
+                        <form class="popup__container">
+                                <input type="text" name="card" class="popup__input popup__input_type_card" placeholder="Название" aria-label="подпись к картинке" />
+                                <input type="url" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" aria-label="ссылка" />
+                                <button class="popup__submit" type="submit">Создать</button>
+                        </form>
+                    </div>
+                </div>
+            <!-- template -->
+            <template id="card-template">
+                <ul class="groups">
+                    <li class="groups__element">
+                    <button class="groups__deletebtn"></button>
+                  <img class="groups__image" src="" alt="" />
+                  <div class="groups__description">
+                    <h3 class="groups__title"></h3>
+                  <button class="groups__like"></button>
+                  </div>
+                    </li>
+                </ul>
+              </template>
+             <!-- открыть картинку  -->
+                        <div class="popup popup_type_image">
+                            <div class="popup__container">
+                                <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                                    <img class="popup__picture" src="" alt="">
+                                    <figcaption class="popup__caption"> </figcaption>
+                            </div>  
+                        </div>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
+
+
+ 

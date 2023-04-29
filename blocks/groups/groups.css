@@ -1,4 +1,4 @@
-.cards {
+.groups {
     margin: 0 auto;
     padding: 0;
     max-width: 880px;
@@ -10,10 +10,8 @@
   }
   
   @media screen and (max-width: 640px) {
-    .cards {
+    .groups {
       margin: 0 auto 48px auto;
       max-width: 282px;
     }
   }
-
-

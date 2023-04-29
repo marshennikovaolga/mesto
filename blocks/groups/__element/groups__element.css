@@ -1,4 +1,4 @@
-.cards__item {
+.groups__element {
     max-width: 282px;
     list-style-type: none;
     text-decoration: none;
@@ -10,4 +10,5 @@
     border-radius: 10px;
     border-color: none;
     overflow: hidden;
+    position: relative;
 }

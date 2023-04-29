@@ -2,80 +2,80 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./pages/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="./pages/index.css" />
         <title>Проект Место: Россия</title>
     </head>
     <body class="page">
-            <header class="header">
-                <img class="header__logo" src="./images/logo.svg" alt="Лого проекта">
-            </header>
-            <main class="content">
-                <section class="profile" aria-label="данные профиля">
-                    <img class="profile__pic" src="./images/profile_pic.jpg" alt="Жак-Ив Кусто">
-                        <div class="profile__info">
-                            <div class="profile__form">
-                                <h1 class="profile__person">Жак-Ив Кусто</h1>
-                            <button type="button" class="profile__btn-edit" aria-label="Редактировать профиль"></button>
-                            </div>
-                            <p class="profile__description">Исследователь океана</p>
-                        </div>
-                    <button type="button" class="profile__btn-add" aria-label="Добавить карточку"></button>
-                </section>
-                <section class="groups">
-                </section>        
-            </main>
-            <footer class="footer">
-                <p class="footer__description">© 2023 Mesto Russia</p>
-            </footer>
-            <!-- Попап для редактирования профиля -->
-            <div class="popup popup_type_edit">
-                <div class="popup__content">
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="Лого проекта" />
+        </header>
+        <main class="content">
+            <section class="profile" aria-label="данные профиля">
+                <img class="profile__pic" src="./images/profile_pic.jpg" alt="Жак-Ив Кусто" />
+                <div class="profile__info">
+                    <div class="profile__form">
+                        <h1 class="profile__person">Жак-Ив Кусто</h1>
+                        <button type="button" class="profile__btn-edit" aria-label="Редактировать профиль"></button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
+                <button type="button" class="profile__btn-add" aria-label="Добавить карточку"></button>
+            </section>
+            <section class="groups"></section>
+        </main>
+        <footer class="footer">
+            <p class="footer__description">© 2023 Mesto Russia</p>
+        </footer>
+        <!-- Попап для редактирования профиля -->
+        <div class="popup popup_type_edit">
+            <div class="popup__content">
                 <button class="popup__close" type="button" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__container">
-                        <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто" aria-label="Имя" />
-                        <input type="text" name="job" class="popup__input popup__input_type_job" placeholder="Исследователь океана" aria-label="Пофессия" />
-                        <button class="popup__submit" type="submit">Сохранить</button>
+                    <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто" aria-label="Имя" />
+                    <input type="text" name="job" class="popup__input popup__input_type_job" placeholder="Исследователь океана" aria-label="Пофессия" />
+                    <button class="popup__submit" type="submit">Сохранить</button>
                 </form>
-                </div>
             </div>
-            <!-- Попап для добавления карточек -->
-                <div class="popup popup_type_add">
-                    <div class="popup__content">
-                        <button class="popup__close" type="button" aria-label="Закрыть"></button>
-                        <h3 class="popup__title">Новое место</h3>
-                        <form class="popup__container">
-                                <input type="text" name="card" class="popup__input popup__input_type_card" placeholder="Название" aria-label="подпись к картинке" />
-                                <input type="url" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" aria-label="ссылка" />
-                                <button class="popup__submit" type="submit">Создать</button>
-                        </form>
-                    </div>
-                </div>
-            <!-- template -->
-            <template id="card-template">
-                <ul class="groups">
-                    <li class="groups__element">
+        </div>
+        <!-- Попап для добавления карточек -->
+        <div class="popup popup_type_add">
+            <div class="popup__content">
+                <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__container">
+                    <input type="text" name="card" class="popup__input popup__input_type_card" placeholder="Название" aria-label="подпись к картинке" />
+                    <input type="url" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" aria-label="ссылка" />
+                    <button class="popup__submit" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+        <!-- template -->
+        <template id="card-template">
+            <ul class="groups">
+                <li class="groups__element">
                     <button class="groups__deletebtn"></button>
-                  <img class="groups__image" src="" alt="" />
-                  <div class="groups__description">
-                    <h3 class="groups__title"></h3>
-                  <button class="groups__like"></button>
-                  </div>
-                    </li>
-                </ul>
-              </template>
-             <!-- открыть картинку  -->
-                        <div class="popup popup_type_image">
-                            <div class="popup__container">
-                                <button class="popup__close" type="button" aria-label="Закрыть"></button>
-                                    <img class="popup__picture" src="" alt="">
-                                    <figcaption class="popup__caption"> </figcaption>
-                            </div>  
-                        </div>
+                    <img class="groups__image" src="" alt="" />
+                    <div class="groups__description">
+                        <h3 class="groups__title"></h3>
+                        <button class="groups__like"></button>
+                    </div>
+                </li>
+            </ul>
+        </template>
+        <!-- открыть картинку  -->
+        <div class="popup popup_type_image">
+            <div class="popup__container">
+                <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                <img class="popup__picture" src="" alt="" />
+                <figcaption class="popup__caption"></figcaption>
+            </div>
+        </div>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
+
 
 
  

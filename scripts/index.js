@@ -83,7 +83,7 @@ function handleAddFormSubmit(evt) {
 
   addFormElement.addEventListener("submit", handleAddFormSubmit);
 
-// закрыть попап при клике на оверлэй
+// закрыть popup при клике на оверлэй
 function handleOverlayClick(evt) {
   const isOverlay = evt.target.classList.contains('popup');
   const isCloseBtn = evt.target.classList.contains('popup__close');

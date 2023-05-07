@@ -132,42 +132,10 @@ const initialCards = [
     },
 ];
 
-//создать карточку
+// создать карточку
 
 function createCard(name, link) {
     const card = cardElement.cloneNode(true);
-    const cardImage = card.querySelector(".groups__image");
-    const cardTitle = card.querySelector(".groups__title");
-    const addLikeBtn = card.querySelector(".groups__like");
-    const deleteButton = card.querySelector(".groups__deletebtn");
-    const addCardImage = card.querySelector(".groups__image");
-
-    cardTitle.textContent = name;
-    addCardImage.src = link;
-    addCardImage.alt = name;
-
-    addLikeBtn.addEventListener("click", () => {
-        addLikeBtn.classList.toggle("groups__like_active");
-    });
-
-    deleteButton.addEventListener("click", () => {
-        card.remove();
-    });
-
-    cardImage.addEventListener("click", () => {
-        imagePopupImage.src = link;
-        imagePopupCaption.textContent = name;
-        openPopup(imagePopup);
-    });
-
-    return card;
-}
-
-//добавить на страницу новую карточку
-
-function addNewCard(name, link) {
-    const card = createCard(name, link);
-    groupsContainer.prepend(card);
     const cardImage = card.querySelector(".groups__image");
     const cardTitle = card.querySelector(".groups__title");
     const addLikeBtn = card.querySelector(".groups__like");
@@ -192,9 +160,15 @@ function addNewCard(name, link) {
         openPopup(imagePopup);
     });
 
-    groupsContainer.prepend(card);
+    return card;
 }
 
+// добавить на страницу новую карточку
+
+function addNewCard(name, link) {
+    const card = createCard(name, link);
+    groupsContainer.prepend(card);
+}
 
 function renderInitialCards() {
     initialCards.forEach((card) => {
@@ -203,11 +177,3 @@ function renderInitialCards() {
     });
 }
 renderInitialCards();
-
-submitAddBtn.addEventListener("click", () => {
-    handleAddFormSubmit();
-});
-
-deleteButton.addEventListener("click", () => {
-    card.remove();
-});

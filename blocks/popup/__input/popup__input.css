@@ -7,22 +7,13 @@
     width: 238px;
     padding: 0 0 13px 0;
     border-bottom: 1px solid #00000026;
-    margin-bottom: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.popup__input:last-of-type {
-    margin-bottom: 45px;
-}
-
 @media screen and (min-width: 768px) {
     .popup__input {
         width: 358px;
-    }
-
-    .popup__input:last-of-type {
-        margin-bottom: 48px;
     }
 }

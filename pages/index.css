@@ -21,7 +21,16 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__inputs/popup__inputs.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/popup/__input/_invalid/popup__input_invalid.css);
+@import url(../blocks/popup/__input/_type_name/popup__input_type_name.css);
+@import url(../blocks/popup/__input/_type_job/popup__input_type_job.css);
+@import url(../blocks/popup/__input/_type_card/popup__input_type_card.css);
+@import url(../blocks/popup/__input/_type_link/popup__input_type_link.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__error/_visible/popup__error_visible.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/_type/popup_type_edit.css);

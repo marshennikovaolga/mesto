@@ -41,10 +41,15 @@ function closePopup(popup) {
 
 // открыть
 openEditPopupBtn.addEventListener("click", () => {
+    editNameInput.value = profileName.textContent;
+    editJobInput.value = profileJob.textContent;
+    resetInputForm(editFormElement);
     openPopup(editPopup);
 });
 
 openAddPopupBtn.addEventListener("click", () => {
+    addFormElement.reset();
+    resetInputForm(addFormElement);
     openPopup(addPopup);
 });
 // закрыть

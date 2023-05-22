@@ -15,10 +15,10 @@
                 <img class="profile__pic" src="./images/profile_pic.jpg" alt="Жак-Ив Кусто">
                 <div class="profile__info">
                     <div class="profile__form">
-                        <h1 class="profile__person">Жак-Ив Кусто</h1>
+                        <h1 class="profile__person">Имя Фамилия</h1>
                         <button type="button" class="profile__btn-edit" aria-label="Редактировать профиль"></button>
                     </div>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description">Веб-разработчик</p>
                 </div>
                 <button type="button" class="profile__btn-add" aria-label="Добавить карточку"></button>
             </section>
@@ -33,9 +33,9 @@
                 <button class="popup__close" type="button" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__container popup__container_type_edit"  name="form-edit" novalidate>
-                    <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="Жак-Ив Кусто" aria-label="Имя" required minlength="2" maxlength="40">
+                    <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="имя автора" aria-label="Имя" required minlength="2" maxlength="40">
                     <span class="popup__error popup__error_type_name" id="name-error"></span>
-                    <input type="text" name="job" id="job" class="popup__input popup__input_type_job" placeholder="Исследователь океана" aria-label="Пофессия" required minlength="2" maxlength="200">
+                    <input type="text" name="job" id="job" class="popup__input popup__input_type_job" placeholder="род деятельности" aria-label="Пофессия" required minlength="2" maxlength="200">
                     <span class="popup__error popup__error_type_job" id="job-error"></span>
                     <input class="popup__submit" type="submit" value="Сохранить">
                 </form>

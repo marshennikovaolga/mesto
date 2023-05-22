@@ -24,6 +24,7 @@ function hangEventListener(inputList, button, config) {
       input.addEventListener("input", () => {
           checkInputValidity(input, config.inputErrorClass, config.errorSelectorTemplate, config.errorClass);
           toggleButtonState(inputList, button, config.inactiveButtonClass);
+          toggleAddButtonState();
       });
   });
 }
@@ -41,6 +42,7 @@ function activeError(input, errorTextElement, inputErrorClass) {
   errorTextElement.classList.add(validationConfig.errorSelectorTemplate + input.name);
 }
 
+// если инпуты валидны
 function resetError(input, errorTextElement, inputErrorClass, errorClass) {
   input.classList.remove(inputErrorClass);
   errorTextElement.textContent = "";
@@ -49,6 +51,20 @@ function resetError(input, errorTextElement, inputErrorClass, errorClass) {
 
 function toggleButtonState(inputList, button, inactiveButtonClass) {
   hasInvalidInput(inputList) ? disableButton(button, inactiveButtonClass) : enableButton(button, inactiveButtonClass);
+}
+
+// деактивация кнопки в add если инпуты пустые
+function toggleAddButtonState() {
+  const isCardNameValid = addCardNameInput.validity.valid;
+  const isCardImageValid = addCardImageInput.validity.valid;
+  
+  if (isCardNameValid && isCardImageValid) {
+    submitAddBtn.disabled = false;
+    submitAddBtn.classList.remove("popup__submit_disabled");
+  } else {
+    submitAddBtn.disabled = true;
+    submitAddBtn.classList.add("popup__submit_disabled");
+  }
 }
 
 function hasInvalidInput(inputList) {
@@ -68,7 +84,6 @@ function disableButton(button, inactiveButtonClass) {
 }
 
 // сбрасываем инпуты в форме при закрытии попапа
-
 function resetInputForm(form) {
   const inputList = form.querySelectorAll(validationConfig.inputSelector);
   const errorTextElements = form.querySelectorAll(`.${validationConfig.errorClass}`);
@@ -81,6 +96,7 @@ function resetInputForm(form) {
       errorTextElement.textContent = "";
       errorTextElement.classList.remove(validationConfig.errorClass);
   });
+  toggleAddButtonState();
 }
 
 enableValidation(validationConfig);

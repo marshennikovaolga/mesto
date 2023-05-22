@@ -20,7 +20,7 @@ const addCardImageInput = addFormElement.querySelector(".popup__input_type_link"
 
 // карточка
 const imagePopup = document.querySelector(".popup_type_image");
-const imagePopupCloseBtn = imagePopup.querySelector(".popup__picture-close");
+const closeImagePopupBtn = imagePopup.querySelector(".popup__close");
 const imagePopupImage = imagePopup.querySelector(".popup__picture");
 const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 const groupsContainer = document.querySelector(".groups");
@@ -31,15 +31,24 @@ const cardTitle = cardElement.querySelector(".groups__title");
 const addLikeBtn = cardElement.querySelector(".groups__like");
 const deleteButton = cardElement.querySelector(".groups__deletebtn");
 
-// универсальные функции откыть и закрыть
+// открыть и закрыть попап 
 function openPopup(popup) {
     popup.classList.add("popup_open");
-}
-function closePopup(popup) {
+  }
+
+  function closePopup(popup) {
     popup.classList.remove("popup_open");
 }
+  
+//закрытие нажатием на Escape
+  function closeByEscape(evt) {
+    if (evt.key === "Escape") {
+      const openedPopup = document.querySelector(".popup_open");
+      closePopup(openedPopup);
+    }
+  }
 
-// открыть
+// слушатели 
 openEditPopupBtn.addEventListener("click", () => {
     editNameInput.value = profileName.textContent;
     editJobInput.value = profileJob.textContent;
@@ -52,7 +61,6 @@ openAddPopupBtn.addEventListener("click", () => {
     resetInputForm(addFormElement);
     openPopup(addPopup);
 });
-// закрыть
 
 closeEditPopupBtn.addEventListener("click", () => {
     closePopup(editPopup);
@@ -62,9 +70,9 @@ closeAddPopupBtn.addEventListener("click", () => {
     closePopup(addPopup);
 });
 
-// закрыть картинку
+document.addEventListener("keydown", closeByEscape);
 
-imagePopupCloseBtn.addEventListener("click", () => {
+closeImagePopupBtn.addEventListener("click", () => {
     closePopup(imagePopup);
 });
 
@@ -89,11 +97,13 @@ function handleAddFormSubmit(evt) {
     if (addCardNameInput.value.trim() === "" || addCardImageInput.value.trim() === "") {
         return;
     }
+    toggleAddButtonState();
     addNewCard(addCardNameInput.value, addCardImageInput.value);
     closePopup(addPopup);
 }
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
+
 
 // закрыть popup при клике на оверлэй
 function handleOverlayClick(evt) {

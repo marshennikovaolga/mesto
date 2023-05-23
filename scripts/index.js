@@ -31,13 +31,18 @@ const cardTitle = cardElement.querySelector(".groups__title");
 const addLikeBtn = cardElement.querySelector(".groups__like");
 const deleteButton = cardElement.querySelector(".groups__deletebtn");
 
-// открыть и закрыть попап 
+// открыть попап 
 function openPopup(popup) {
     popup.classList.add("popup_open");
+    document.addEventListener("click", handlePopupClose);
+    document.addEventListener("keydown", closeByEscape);
   }
 
+// закрыть попап 
   function closePopup(popup) {
     popup.classList.remove("popup_open");
+    document.removeEventListener("click", handlePopupClose);
+    document.removeEventListener("keydown", closeByEscape);
 }
   
 //закрытие нажатием на Escape
@@ -62,19 +67,9 @@ openAddPopupBtn.addEventListener("click", () => {
     openPopup(addPopup);
 });
 
-closeEditPopupBtn.addEventListener("click", () => {
-    closePopup(editPopup);
-});
-
-closeAddPopupBtn.addEventListener("click", () => {
-    closePopup(addPopup);
-});
-
-document.addEventListener("keydown", closeByEscape);
-
-closeImagePopupBtn.addEventListener("click", () => {
-    closePopup(imagePopup);
-});
+closeEditPopupBtn.addEventListener("click", handlePopupClose);
+closeAddPopupBtn.addEventListener("click", handlePopupClose);
+closeImagePopupBtn.addEventListener("click", handlePopupClose);
 
 // ввести и сохранить данные
 
@@ -97,7 +92,6 @@ function handleAddFormSubmit(evt) {
     if (addCardNameInput.value.trim() === "" || addCardImageInput.value.trim() === "") {
         return;
     }
-    toggleAddButtonState();
     addNewCard(addCardNameInput.value, addCardImageInput.value);
     closePopup(addPopup);
 }
@@ -106,7 +100,7 @@ addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 
 // закрыть popup при клике на оверлэй
-function handleOverlayClick(evt) {
+function handlePopupClose(evt) {
     const isOverlay = evt.target.classList.contains("popup");
     const isCloseBtn = evt.target.classList.contains("popup__close");
     if (isOverlay || isCloseBtn) {
@@ -114,9 +108,9 @@ function handleOverlayClick(evt) {
     }
 }
 
-editPopup.addEventListener("click", handleOverlayClick);
-addPopup.addEventListener("click", handleOverlayClick);
-imagePopup.addEventListener("click", handleOverlayClick);
+editPopup.addEventListener("click", handlePopupClose);
+addPopup.addEventListener("click", handlePopupClose);
+imagePopup.addEventListener("click", handlePopupClose);
 
 // массив карточек
 

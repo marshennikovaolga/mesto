@@ -14,6 +14,10 @@ function enableValidation({ allforms, inputSelector, submitButtonSelector, ...co
   forms.forEach((form) => {
       const inputList = form.querySelectorAll(inputSelector);
       const button = form.querySelector(submitButtonSelector);
+      //деактивация кнопки submit при открытии add popup
+      if (form === addFormElement) {
+        disableButton(button, config.inactiveButtonClass);
+      }
       hangEventListener(inputList, button, config);
   });
 }
@@ -24,7 +28,6 @@ function hangEventListener(inputList, button, config) {
       input.addEventListener("input", () => {
           checkInputValidity(input, config.inputErrorClass, config.errorSelectorTemplate, config.errorClass);
           toggleButtonState(inputList, button, config.inactiveButtonClass);
-          toggleAddButtonState();
       });
   });
 }
@@ -50,20 +53,10 @@ function resetError(input, errorTextElement, inputErrorClass, errorClass) {
 }
 
 function toggleButtonState(inputList, button, inactiveButtonClass) {
-  hasInvalidInput(inputList) ? disableButton(button, inactiveButtonClass) : enableButton(button, inactiveButtonClass);
-}
-
-// деактивация кнопки в add если инпуты пустые
-function toggleAddButtonState() {
-  const isCardNameValid = addCardNameInput.validity.valid;
-  const isCardImageValid = addCardImageInput.validity.valid;
-  
-  if (isCardNameValid && isCardImageValid) {
-    submitAddBtn.disabled = false;
-    submitAddBtn.classList.remove("popup__submit_disabled");
+  if (hasInvalidInput(inputList)) {
+    disableButton(button, inactiveButtonClass);
   } else {
-    submitAddBtn.disabled = true;
-    submitAddBtn.classList.add("popup__submit_disabled");
+    enableButton(button, inactiveButtonClass);
   }
 }
 
@@ -86,17 +79,9 @@ function disableButton(button, inactiveButtonClass) {
 // сбрасываем инпуты в форме при закрытии попапа
 function resetInputForm(form) {
   const inputList = form.querySelectorAll(validationConfig.inputSelector);
-  const errorTextElements = form.querySelectorAll(`.${validationConfig.errorClass}`);
-
   inputList.forEach((input) => {
-      input.classList.remove(validationConfig.inputErrorClass);
-  });
-
-  errorTextElements.forEach((errorTextElement) => {
-      errorTextElement.textContent = "";
-      errorTextElement.classList.remove(validationConfig.errorClass);
-  });
-  toggleAddButtonState();
+    input.classList.remove(validationConfig.inputErrorClass);
+});
 }
 
 enableValidation(validationConfig);

@@ -1,3 +1,5 @@
+
+
 // edit
 const editPopup = document.querySelector(".popup_type_edit");
 const editFormElement = editPopup.querySelector(".popup__container");
@@ -57,19 +59,18 @@ function openPopup(popup) {
 openEditPopupBtn.addEventListener("click", () => {
     editNameInput.value = profileName.textContent;
     editJobInput.value = profileJob.textContent;
-    resetInputForm(editFormElement);
+    submitEditBtn.disabled = false;
+    submitEditBtn.classList.remove("popup__submit_disabled");
     openPopup(editPopup);
 });
 
 openAddPopupBtn.addEventListener("click", () => {
     addFormElement.reset();
+    submitAddBtn.disabled = true;
+    submitAddBtn.classList.add("popup__submit_disabled");
     resetInputForm(addFormElement);
     openPopup(addPopup);
 });
-
-closeEditPopupBtn.addEventListener("click", handlePopupClose);
-closeAddPopupBtn.addEventListener("click", handlePopupClose);
-closeImagePopupBtn.addEventListener("click", handlePopupClose);
 
 // ввести и сохранить данные
 
@@ -81,6 +82,7 @@ function handleEditFormSubmit(evt) {
     }
     profileName.textContent = editNameInput.value;
     profileJob.textContent = editJobInput.value;
+    resetInputForm(editFormElement);
     closePopup(editPopup);
 }
 
@@ -107,10 +109,6 @@ function handlePopupClose(evt) {
         closePopup(evt.target.closest(".popup"));
     }
 }
-
-editPopup.addEventListener("click", handlePopupClose);
-addPopup.addEventListener("click", handlePopupClose);
-imagePopup.addEventListener("click", handlePopupClose);
 
 // массив карточек
 

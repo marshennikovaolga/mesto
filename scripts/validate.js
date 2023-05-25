@@ -14,11 +14,8 @@ function enableValidation({ allforms, inputSelector, submitButtonSelector, ...co
   forms.forEach((form) => {
       const inputList = form.querySelectorAll(inputSelector);
       const button = form.querySelector(submitButtonSelector);
-      //деактивация кнопки submit при открытии add popup
-      if (form === addFormElement) {
-        disableButton(button, config.inactiveButtonClass);
-      }
       hangEventListener(inputList, button, config);
+      toggleButtonState(inputList, button, config.inactiveButtonClass);
   });
 }
 
@@ -85,3 +82,4 @@ function resetInputForm(form) {
 }
 
 enableValidation(validationConfig);
+

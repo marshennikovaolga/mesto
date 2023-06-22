@@ -60,7 +60,8 @@ openEditPopupBtn.addEventListener("click", () => {
     if (form) {
         const formValidator = new FormValidator(form, validationConfig);
         openPopup(editPopup);
-        formValidator.resetInputForm(form); // сброс значений формы при открытии попапа
+        formValidator.resetInputForm(form); // сброс значений формы при открытии попапа - 
+        // не могу разобраться что сделать чтобы сбрасывались только ошибки
     }
 });
 

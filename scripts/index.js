@@ -1,5 +1,5 @@
 import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import { FormValidator, validationConfig } from "./FormValidator.js";
 
 // edit
 const editPopup = document.querySelector(".popup_type_edit");
@@ -55,14 +55,19 @@ openEditPopupBtn.addEventListener("click", () => {
     editJobInput.value = profileJob.textContent;
     submitEditBtn.disabled = false;
     submitEditBtn.classList.remove("popup__submit_disabled");
-    openPopup(editPopup);
+    
+    const form = editPopup.querySelector(".popup__container");
+    if (form) {
+        const formValidator = new FormValidator(form, validationConfig);
+        openPopup(editPopup);
+        formValidator.resetInputForm(form); // сброс значений формы при открытии попапа
+    }
 });
 
 openAddPopupBtn.addEventListener("click", () => {
     addFormElement.reset();
     submitAddBtn.disabled = true;
     submitAddBtn.classList.add("popup__submit_disabled");
-    // resetInputForm(addFormElement);
     openPopup(addPopup);
 });
 
@@ -79,7 +84,7 @@ function handleEditFormSubmit(evt) {
     // resetInputForm(editFormElement);
     closePopup(editPopup);
 }
-
+  
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
 //add

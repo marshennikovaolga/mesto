@@ -59,6 +59,7 @@ export class FormValidator {
         const inputList = form.querySelectorAll(this._inputSelector);
         inputList.forEach((input) => {
             input.classList.remove(this._inputErrorClass);
+            input.value = ""; // сброс значения поля
         });
     }
 
@@ -82,7 +83,7 @@ export class FormValidator {
     }
 }
 
-const validationConfig = {
+export const validationConfig = {
     allforms: document.forms,
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__submit",

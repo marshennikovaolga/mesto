@@ -1,5 +1,5 @@
 import { Card } from "./Card.js";
-import { FormValidator, validationConfig } from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 
 // edit
 const editPopup = document.querySelector(".popup_type_edit");
@@ -27,6 +27,33 @@ const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 const groupsContainer = document.querySelector(".groups");
 const cardTemplate = document.querySelector("#card-template").content;
 
+const initialCards = [
+    {
+        name: "Архыз",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+    },
+    {
+        name: "Челябинская область",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+    },
+    {
+        name: "Иваново",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+    },
+    {
+        name: "Камчатка",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+    },
+    {
+        name: "Холмогорский район",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+    },
+    {
+        name: "Байкал",
+        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+    },
+];
+
 // открыть попап
 function openPopup(popup) {
     popup.classList.add("popup_open");
@@ -53,23 +80,25 @@ function closeByEscape(evt) {
 openEditPopupBtn.addEventListener("click", () => {
     editNameInput.value = profileName.textContent;
     editJobInput.value = profileJob.textContent;
-    submitEditBtn.disabled = false;
-    submitEditBtn.classList.remove("popup__submit_disabled");
-    
     const form = editPopup.querySelector(".popup__container");
     if (form) {
         const formValidator = new FormValidator(form, validationConfig);
         openPopup(editPopup);
-        formValidator.resetInputForm(form); // сброс значений формы при открытии попапа - 
-        // не могу разобраться что сделать чтобы сбрасывались только ошибки
+        formValidator.resetInputForm(form);
+        formValidator._toggleButtonState();
     }
 });
 
 openAddPopupBtn.addEventListener("click", () => {
     addFormElement.reset();
-    submitAddBtn.disabled = true;
-    submitAddBtn.classList.add("popup__submit_disabled");
     openPopup(addPopup);
+    const form = addPopup.querySelector(".popup__container");
+    if (form) {
+        const formValidator = new FormValidator(form, validationConfig);
+        openPopup(addPopup);
+        formValidator.resetInputForm(form);
+        formValidator._toggleButtonState();
+    }
 });
 
 // ввести и сохранить данные
@@ -82,7 +111,6 @@ function handleEditFormSubmit(evt) {
     }
     profileName.textContent = editNameInput.value;
     profileJob.textContent = editJobInput.value;
-    // resetInputForm(editFormElement);
     closePopup(editPopup);
 }
   
@@ -111,3 +139,34 @@ function handlePopupClose(evt) {
         closePopup(evt.target.closest(".popup"));
     }
 }
+
+// добавление новой карточки н страницу
+function renderInitialCards() {
+    const groupsContainer = document.querySelector(".groups");
+    initialCards.forEach((card) => {
+        const newCard = new Card(card, "#card-template").createCard(openPopup);
+        groupsContainer.prepend(newCard);
+    });
+}
+
+renderInitialCards();
+
+const validationConfig = {
+    allforms: document.forms,
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_disabled",
+    errorSelectorTemplate: "popup__error_type_",
+    inputErrorClass: "popup__input_invalid",
+    errorClass: "popup__error_visible",
+};
+
+function enableValidation(config) {
+    const forms = Array.from(config.allforms);
+    forms.forEach((form) => {
+        const formValidator = new FormValidator(form, config);
+        formValidator.enableValidation();
+    });
+}
+
+enableValidation(validationConfig);

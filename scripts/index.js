@@ -68,7 +68,7 @@ function closePopup(popup) {
     document.removeEventListener("keydown", closeByEscape);
 }
 
-//закрытие нажатием на Escape
+// закрытие нажатием на Escape
 function closeByEscape(evt) {
     if (evt.key === "Escape") {
         const openedPopup = document.querySelector(".popup_open");
@@ -80,30 +80,23 @@ function closeByEscape(evt) {
 openEditPopupBtn.addEventListener("click", () => {
     editNameInput.value = profileName.textContent;
     editJobInput.value = profileJob.textContent;
-    const form = editPopup.querySelector(".popup__container");
-    if (form) {
-        const formValidator = new FormValidator(form, validationConfig);
-        openPopup(editPopup);
-        formValidator.resetInputForm(form);
-        formValidator._toggleButtonState();
-    }
+    const formValidator = new FormValidator(editFormElement, validationConfig);
+    openPopup(editPopup);
+    formValidator.resetInputForm();
+    formValidator._toggleButtonState();
 });
 
 openAddPopupBtn.addEventListener("click", () => {
     addFormElement.reset();
+    const formValidator = new FormValidator(addFormElement, validationConfig);
     openPopup(addPopup);
-    const form = addPopup.querySelector(".popup__container");
-    if (form) {
-        const formValidator = new FormValidator(form, validationConfig);
-        openPopup(addPopup);
-        formValidator.resetInputForm(form);
-        formValidator._toggleButtonState();
-    }
+    formValidator.resetInputForm();
+    formValidator._toggleButtonState();
 });
 
 // ввести и сохранить данные
 
-//edit
+// edit
 function handleEditFormSubmit(evt) {
     evt.preventDefault();
     if (editNameInput.value.trim() === "" || editJobInput.value.trim() === "") {
@@ -113,17 +106,16 @@ function handleEditFormSubmit(evt) {
     profileJob.textContent = editJobInput.value;
     closePopup(editPopup);
 }
-  
+
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
-//add
+// add
 function handleAddFormSubmit(evt) {
     evt.preventDefault();
     if (addCardNameInput.value.trim() === "" || addCardImageInput.value.trim() === "") {
         return;
     }
-    const newCard = new Card({ name: addCardNameInput.value, link: addCardImageInput.value,},
-    "#card-template");
+    const newCard = new Card({ name: addCardNameInput.value, link: addCardImageInput.value }, "#card-template");
     const cardElement = newCard.createCard(openPopup);
     groupsContainer.prepend(cardElement);
     closePopup(addPopup);

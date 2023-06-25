@@ -27,6 +27,16 @@ const imagePopupCaption = imagePopup.querySelector(".popup__caption");
 const groupsContainer = document.querySelector(".groups");
 const cardTemplate = document.querySelector("#card-template").content;
 
+const validationConfig = {
+    allforms: document.forms,
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_disabled",
+    errorSelectorTemplate: "popup__error_type_",
+    inputErrorClass: "popup__input_invalid",
+    errorClass: "popup__error_visible",
+};
+
 const initialCards = [
     {
         name: "Архыз",
@@ -76,22 +86,27 @@ function closeByEscape(evt) {
     }
 }
 
+const profileFormValidator = new FormValidator(editFormElement, validationConfig);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(addFormElement, validationConfig);
+cardFormValidator.enableValidation(); 
+
+
 // слушатели
 openEditPopupBtn.addEventListener("click", () => {
     editNameInput.value = profileName.textContent;
     editJobInput.value = profileJob.textContent;
-    const formValidator = new FormValidator(editFormElement, validationConfig);
     openPopup(editPopup);
-    formValidator.resetInputForm();
-    formValidator._toggleButtonState();
+    profileFormValidator.resetInputForm();
+    profileFormValidator._toggleButtonState();
 });
 
 openAddPopupBtn.addEventListener("click", () => {
     addFormElement.reset();
-    const formValidator = new FormValidator(addFormElement, validationConfig);
     openPopup(addPopup);
-    formValidator.resetInputForm();
-    formValidator._toggleButtonState();
+    cardFormValidator.resetInputForm();
+    cardFormValidator._toggleButtonState();
 });
 
 // ввести и сохранить данные
@@ -142,23 +157,3 @@ function renderInitialCards() {
 }
 
 renderInitialCards();
-
-const validationConfig = {
-    allforms: document.forms,
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__submit",
-    inactiveButtonClass: "popup__submit_disabled",
-    errorSelectorTemplate: "popup__error_type_",
-    inputErrorClass: "popup__input_invalid",
-    errorClass: "popup__error_visible",
-};
-
-function enableValidation(config) {
-    const forms = Array.from(config.allforms);
-    forms.forEach((form) => {
-        const formValidator = new FormValidator(form, config);
-        formValidator.enableValidation();
-    });
-}
-
-enableValidation(validationConfig);

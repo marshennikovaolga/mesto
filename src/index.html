@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Проект Место: Россия</title>
+    </head>
+    <body class="page">
+        <header class="header">
+            <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Лого проекта">
+        </header>
+        <main class="content">
+            <section class="profile" aria-label="данные профиля">
+                <img src="<%=require('./images/profile-pic.jpg')%>" class="profile__pic" alt="аватар">
+                <div class="profile__info">
+                    <div class="profile__form">
+                        <h1 class="profile__person">Имя Фамилия</h1>
+                        <button type="button" class="profile__btn-edit" aria-label="Редактировать профиль"></button>
+                    </div>
+                    <p class="profile__description">Веб-разработчик</p>
+                </div>
+                <button type="button" class="profile__btn-add" aria-label="Добавить карточку"></button>
+            </section>
+            <section class="groups"></section>
+        </main>
+        <footer class="footer">
+            <p class="footer__description">© 2023 Mesto Russia</p>
+        </footer>
+        <!-- Попап для редактирования профиля -->
+        <div class="popup popup_type_edit">
+            <div class="popup__content">
+                <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form class="popup__container popup__container_type_edit"  name="form-edit" novalidate>
+                    <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="имя автора" aria-label="Имя" required minlength="2" maxlength="40">
+                    <span class="popup__error popup__error_type_name" id="name-error"></span>
+                    <input type="text" name="job" id="job" class="popup__input popup__input_type_job" placeholder="род деятельности" aria-label="Пофессия" required minlength="2" maxlength="200">
+                    <span class="popup__error popup__error_type_job" id="job-error"></span>
+                    <input class="popup__submit" type="submit" value="Сохранить">
+                </form>
+            </div>
+        </div>
+        <!-- Попап для добавления карточек -->
+        <div class="popup popup_type_add">
+            <div class="popup__content">
+                <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__container popup__container_type_add"  name="form-add" novalidate>
+                    <input required minlength="2" maxlength="30" class="popup__input popup__input_type_card" type="text" name="card" id="card" placeholder="Название" aria-label="подпись к картинке">
+                    <span class="popup__error popup__error_type_card" id="card-error"></span>
+                    <input type="url" name="url" id="url" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" aria-label="ссылка" required>
+                    <span class="popup__error popup__error_type_url" id="url-error"></span>
+                    <input class="popup__submit" type="submit" value="Создать">
+                </form>
+            </div>
+        </div>
+        <!-- template -->
+        <template id="card-template">
+            <ul class="groups">
+                <li class="groups__element">
+                    <button class="groups__deletebtn"></button>
+                    <img class="groups__image" src="#" alt="">
+                    <div class="groups__description">
+                        <h3 class="groups__title"></h3>
+                        <button class="groups__like" type="button"></button>
+                    </div>
+                </li>
+            </ul>
+        </template>
+        <!-- открыть картинку  -->
+            <div class="popup popup_type_image">
+                <div class="popup__container popup__image-container">
+                    <button class="popup__close" type="button" aria-label="Закрыть"></button>
+                    <img class="popup__picture" src="#" alt="картинка">
+                    <figcaption class="popup__caption"></figcaption>
+                </div>
+            </div>
+            <script type="module" src="./pages/index.js"></script>
+    </body>
+</html>

@@ -34,7 +34,19 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: 'svg-loader',
+        use: 'svg-url-loader',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
       },
     ],
   },
@@ -46,5 +58,3 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
 };
-
-
